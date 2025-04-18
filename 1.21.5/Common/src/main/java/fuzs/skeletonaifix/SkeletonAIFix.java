@@ -5,6 +5,7 @@ import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.event.v1.entity.EntityTickEvents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.RangedBowAttackGoal;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
@@ -22,7 +23,7 @@ public class SkeletonAIFix implements ModConstructor {
     }
 
     private static void registerEventHandlers() {
-        EntityTickEvents.END.register(entity -> {
+        EntityTickEvents.END.register((Entity entity) -> {
             if (entity instanceof AbstractSkeleton abstractSkeleton) {
                 RangedBowAttackGoal<AbstractSkeleton> bowGoal = abstractSkeleton.bowGoal;
                 // disable strafing behavior
@@ -37,7 +38,8 @@ public class SkeletonAIFix implements ModConstructor {
                         attackInterval = abstractSkeleton.getAttackInterval();
                     }
                     double distanceToTargetSqr = abstractSkeleton.distanceToSqr(livingEntity);
-                    attackInterval -= (int) ((1.0 - Math.min(distanceToTargetSqr / bowGoal.attackRadiusSqr, 1.0)) * 20.0);
+                    attackInterval -= (int) ((1.0 - Math.min(distanceToTargetSqr / bowGoal.attackRadiusSqr, 1.0)) *
+                            20.0);
                     bowGoal.setMinAttackInterval(attackInterval);
                 }
             }
