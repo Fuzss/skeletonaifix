@@ -1,10 +1,10 @@
 package fuzs.skeletonaifix.neoforge;
 
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
-import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
+import fuzs.puzzleslib.api.data.v2.core.DataProviderHelper;
 import fuzs.skeletonaifix.SkeletonAIFix;
 import fuzs.skeletonaifix.data.ModEntityTypeTagProvider;
-import net.neoforged.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod;
 
 @Mod(SkeletonAIFix.MOD_ID)
 public class SkeletonAIFixNeoForge {

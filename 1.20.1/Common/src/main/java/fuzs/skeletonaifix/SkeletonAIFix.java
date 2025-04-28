@@ -2,11 +2,11 @@ package fuzs.skeletonaifix;
 
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
-import fuzs.puzzleslib.api.event.v1.entity.EntityTickEvents;
+import fuzs.puzzleslib.api.event.v1.core.EventResult;
+import fuzs.puzzleslib.api.event.v1.entity.living.LivingEvents;
 import fuzs.skeletonaifix.init.ModRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.RangedBowAttackGoal;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
@@ -25,7 +25,7 @@ public class SkeletonAIFix implements ModConstructor {
     }
 
     private static void registerEventHandlers() {
-        EntityTickEvents.END.register((Entity entity) -> {
+        LivingEvents.TICK.register((LivingEntity entity) -> {
             if (entity instanceof AbstractSkeleton abstractSkeleton &&
                     abstractSkeleton.getType().is(ModRegistry.WELL_BEHAVED_SKELETONS_ENTITY_TYPE_TAG)) {
                 RangedBowAttackGoal<AbstractSkeleton> bowGoal = abstractSkeleton.bowGoal;
@@ -36,9 +36,9 @@ public class SkeletonAIFix implements ModConstructor {
                 if (livingEntity != null) {
                     int attackInterval;
                     if (abstractSkeleton.level().getDifficulty() == Difficulty.HARD) {
-                        attackInterval = abstractSkeleton.getHardAttackInterval();
+                        attackInterval = 20;
                     } else {
-                        attackInterval = abstractSkeleton.getAttackInterval();
+                        attackInterval = 40;
                     }
                     double distanceToTargetSqr = abstractSkeleton.distanceToSqr(livingEntity);
                     attackInterval -= (int) ((1.0 - Math.min(distanceToTargetSqr / bowGoal.attackRadiusSqr, 1.0)) *
@@ -46,6 +46,8 @@ public class SkeletonAIFix implements ModConstructor {
                     bowGoal.setMinAttackInterval(attackInterval);
                 }
             }
+
+            return EventResult.PASS;
         });
     }
 

@@ -16,6 +16,6 @@ public class ModEntityTypeTagProvider extends AbstractTagProvider<EntityType<?>>
 
     @Override
     public void addTags(HolderLookup.Provider provider) {
-        this.tag(ModRegistry.WELL_BEHAVED_SKELETONS_ENTITY_TYPE_TAG).addTag(EntityTypeTags.SKELETONS);
+        this.add(ModRegistry.WELL_BEHAVED_SKELETONS_ENTITY_TYPE_TAG).addTag(EntityTypeTags.SKELETONS);
     }
 }
