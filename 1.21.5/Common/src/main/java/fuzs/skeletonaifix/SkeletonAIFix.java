@@ -3,6 +3,7 @@ package fuzs.skeletonaifix;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.event.v1.entity.EntityTickEvents;
+import fuzs.skeletonaifix.init.ModRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
@@ -19,12 +20,14 @@ public class SkeletonAIFix implements ModConstructor {
 
     @Override
     public void onConstructMod() {
+        ModRegistry.bootstrap();
         registerEventHandlers();
     }
 
     private static void registerEventHandlers() {
         EntityTickEvents.END.register((Entity entity) -> {
-            if (entity instanceof AbstractSkeleton abstractSkeleton) {
+            if (entity instanceof AbstractSkeleton abstractSkeleton &&
+                    abstractSkeleton.getType().is(ModRegistry.WELL_BEHAVED_SKELETONS_ENTITY_TYPE_TAG)) {
                 RangedBowAttackGoal<AbstractSkeleton> bowGoal = abstractSkeleton.bowGoal;
                 // disable strafing behavior
                 bowGoal.strafingTime = Integer.MIN_VALUE;
