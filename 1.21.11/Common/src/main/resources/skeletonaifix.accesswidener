@@ -1,6 +1,6 @@
 accessWidener   v2  named
-accessible  field   net/minecraft/world/entity/monster/AbstractSkeleton bowGoal Lnet/minecraft/world/entity/ai/goal/RangedBowAttackGoal;
-accessible  method  net/minecraft/world/entity/monster/AbstractSkeleton getHardAttackInterval   ()I
-accessible  method  net/minecraft/world/entity/monster/AbstractSkeleton getAttackInterval   ()I
+accessible  field   net/minecraft/world/entity/monster/skeleton/AbstractSkeleton    bowGoal Lnet/minecraft/world/entity/ai/goal/RangedBowAttackGoal;
+accessible  method  net/minecraft/world/entity/monster/skeleton/AbstractSkeleton    getHardAttackInterval   ()I
+accessible  method  net/minecraft/world/entity/monster/skeleton/AbstractSkeleton    getAttackInterval   ()I
 accessible  field   net/minecraft/world/entity/ai/goal/RangedBowAttackGoal  attackRadiusSqr F
 accessible  field   net/minecraft/world/entity/ai/goal/RangedBowAttackGoal  strafingTime    I

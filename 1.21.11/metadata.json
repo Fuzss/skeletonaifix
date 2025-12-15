@@ -1,0 +1,61 @@
+{
+    "mod": {
+        "id": "skeletonaifix",
+        "group": "fuzs.skeletonaifix",
+        "name": "Skeleton AI Fix",
+        "version": "21.11.0",
+        "authors": [
+            "Fuzs"
+        ],
+        "description": "Eliminates awkward strafing-Skeletons now stay focused and shoot faster the closer you get.",
+        "license": "MPL-2.0"
+    },
+    "dependencies": [
+        {
+            "name": "fabricapi",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "forgeconfigapiport",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "puzzleslib",
+            "type": "required",
+            "platforms": [
+                "fabric",
+                "neoforge"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "name": "github",
+            "slug": "skeletonaifix"
+        },
+        {
+            "name": "curseforge",
+            "slug": "skeleton-ai-fix",
+            "id": "319351"
+        },
+        {
+            "name": "modrinth",
+            "slug": "skeleton-ai-fix",
+            "id": "jn24bUJo"
+        }
+    ],
+    "environments": {
+        "client": "unsupported",
+        "server": "required"
+    },
+    "platforms": [
+        "fabric",
+        "neoforge"
+    ]
+}

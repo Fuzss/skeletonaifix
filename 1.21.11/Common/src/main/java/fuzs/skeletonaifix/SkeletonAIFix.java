@@ -2,16 +2,15 @@ package fuzs.skeletonaifix;
 
 import fuzs.puzzleslib.api.config.v3.ConfigHolder;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
-import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.event.v1.entity.EntityTickEvents;
 import fuzs.skeletonaifix.config.ServerConfig;
 import fuzs.skeletonaifix.init.ModRegistry;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.RangedBowAttackGoal;
-import net.minecraft.world.entity.monster.AbstractSkeleton;
+import net.minecraft.world.entity.monster.skeleton.AbstractSkeleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,6 +60,7 @@ public class SkeletonAIFix implements ModConstructor {
         } else {
             attackInterval = abstractSkeleton.getAttackInterval();
         }
+
         attackInterval *= CONFIG.get(ServerConfig.class).attackIntervalMultiplier;
         return attackInterval;
     }
@@ -77,7 +77,7 @@ public class SkeletonAIFix implements ModConstructor {
         return 1.0 - (1.0 - x) * (1.0 - x);
     }
 
-    public static ResourceLocation id(String path) {
-        return ResourceLocationHelper.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }
